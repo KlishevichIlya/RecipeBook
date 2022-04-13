@@ -10,6 +10,7 @@ import { RecepieItemComponent } from './recepies/recepie-list/recepie-item/recep
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShopingEditComponent } from './shopping-list/shoping-edit/shoping-edit.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { ShopingEditComponent } from './shopping-list/shoping-edit/shoping-edit.
     RecepieItemComponent,
     ShoppingListComponent,
     ShopingEditComponent
+
   ],
   imports: [
     BrowserModule

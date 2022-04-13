@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import {Component, EventEmitter, Output} from "@angular/core";
 
 @Component({
     selector: "app-header",
@@ -6,5 +6,14 @@ import { Component } from "@angular/core";
 })
 
 export class HeaderComponent{
+  //public flag = true;
+  @Output() eventEmmit = new EventEmitter<string>();
 
+  onShowRecepies(){
+    this.eventEmmit.emit('Recepie');
+  }
+
+  onShowShoppingList(){
+    this.eventEmmit.emit('ShopList');
+  }
 }

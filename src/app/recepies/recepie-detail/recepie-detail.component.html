@@ -1,17 +1,17 @@
 <div class="row">
     <div class="col-xs-12">
-        <img src="" alt="" class="img-responsive">
+        <img src="{{recepieForDetail?.imagePath}}" alt="" class="img-responsive">
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h1>Recepi Name</h1>
+        <h1>{{recepieForDetail?.name}}</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
         <div class="btn-group">
-            <button 
+            <button
                 type="button"
                 class="btn btn-primary dropdown-toggle">
                     Manage Recepi <span class="caret"></span>
@@ -27,7 +27,7 @@
 
 <div class="row">
     <div class="col-xs-12">
-        Description
+        {{recepieForDetail?.description}}
     </div>
 </div>
 <div class="row">

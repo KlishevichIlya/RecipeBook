@@ -1,8 +1,15 @@
 <div class="row">
     <div class="col-md-5">
-        <app-recepie-list></app-recepie-list>
+        <app-recepie-list
+          (selectedItemFromList)="onShowDetail($event)"
+        >
+
+        </app-recepie-list>
     </div>
     <div class="col-md-7">
-        <app-recepie-detail></app-recepie-detail>
+        <app-recepie-detail *ngIf="recepieForDetail; else infoText" [recepieForDetail]="recepieForDetail"></app-recepie-detail>
+      <ng-template #infoText>
+        <p>Please select a Recepie!</p>
+      </ng-template>
     </div>
 </div>

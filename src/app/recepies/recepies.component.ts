@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Recepie} from "./recepie.model";
+import {Component, OnInit, Output} from '@angular/core';
+import {Recepie} from "../shared/recepie.model";
+import {RecepieService} from "./recepie.service";
 
 @Component({
   selector: 'app-recepies',
@@ -10,13 +11,12 @@ export class RecepiesComponent implements OnInit {
 
   public recepieForDetail : Recepie | undefined;
 
-  constructor() { }
+  constructor(private recepieService: RecepieService) { }
 
   ngOnInit(): void {
+    this.recepieService.selectedRecepie.subscribe((recepie: Recepie) => {this.recepieForDetail = recepie});
   }
 
-  onShowDetail(selectedItem: Recepie){
-      this.recepieForDetail = selectedItem;
-  }
+
 
 }

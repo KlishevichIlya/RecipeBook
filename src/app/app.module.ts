@@ -10,6 +10,9 @@ import { RecepieItemComponent } from './recepies/recepie-list/recepie-item/recep
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShopingEditComponent } from './shopping-list/shoping-edit/shoping-edit.component';
 import {DropdownDirective} from "./shared/dropdown.directive";
+import {ShoppingListService} from "./shopping-list/shopping-list.service";
+import {RecepieService} from "./recepies/recepie.service";
+import {AppRoutingModule} from "./app-routing.module";
 
 
 @NgModule({
@@ -26,9 +29,10 @@ import {DropdownDirective} from "./shared/dropdown.directive";
 
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [ShoppingListService, RecepieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

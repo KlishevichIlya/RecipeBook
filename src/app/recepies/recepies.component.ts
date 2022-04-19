@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Recepie} from "../shared/recepie.model";
 import {RecepieService} from "./recepie.service";
 
@@ -9,12 +9,11 @@ import {RecepieService} from "./recepie.service";
 })
 export class RecepiesComponent implements OnInit {
 
-  public recepieForDetail : Recepie | undefined;
-
+  //public recepieForDetail : Recepie | undefined;
   constructor(private recepieService: RecepieService) { }
 
   ngOnInit(): void {
-    this.recepieService.selectedRecepie.subscribe((recepie: Recepie) => {this.recepieForDetail = recepie});
+    //this.recepieService.selectedRecepie.subscribe((recepie: Recepie) => {this.recepieForDetail = recepie});
   }
 
 

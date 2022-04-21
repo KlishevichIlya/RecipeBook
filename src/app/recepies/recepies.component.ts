@@ -8,14 +8,7 @@ import {RecepieService} from "./recepie.service";
   styleUrls: ['./recepies.component.css']
 })
 export class RecepiesComponent implements OnInit {
-
-  //public recepieForDetail : Recepie | undefined;
-  constructor(private recepieService: RecepieService) { }
-
+  constructor() { }
   ngOnInit(): void {
-    //this.recepieService.selectedRecepie.subscribe((recepie: Recepie) => {this.recepieForDetail = recepie});
   }
-
-
-
 }

@@ -7,6 +7,8 @@ import {RecepieDetailComponent} from "./recepies/recepie-detail/recepie-detail.c
 import {ShoppingListComponent} from "./shopping-list/shopping-list.component";
 import {RecepieStartComponent} from "./recepies/recepie-start/recepie-start.component";
 import {RecepieEditComponent} from "./recepies/recepie-edit/recepie-edit.component";
+import {RecepiesResolverServer} from "./recepies/recepies-resolver.server";
+import {AuthComponent} from "./auth/auth.component";
 
 const appRoot: Routes = [
   {path: '', redirectTo: 'recepies', pathMatch: 'full'},
@@ -16,10 +18,11 @@ const appRoot: Routes = [
     children: [
       {path: '', component: RecepieStartComponent},
       {path: 'new', component: RecepieEditComponent},
-      {path: ':id', component: RecepieDetailComponent},
-      {path: ':id/edit', component: RecepieEditComponent}
+      {path: ':id', component: RecepieDetailComponent, resolve: [RecepiesResolverServer]},
+      {path: ':id/edit', component: RecepieEditComponent, resolve: [RecepiesResolverServer]},
     ]
   },
+  {path: 'auth', component: AuthComponent},
   {path:'shopping-list', component: ShoppingListComponent }
 ]
 

@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Output} from "@angular/core";
+import {Component} from "@angular/core";
+import {DataStorageService} from "../shared/data-storage.service";
 
 @Component({
     selector: "app-header",
@@ -6,14 +7,14 @@ import {Component, EventEmitter, Output} from "@angular/core";
 })
 
 export class HeaderComponent{
-  //public flag = true;
-  @Output() eventEmmit = new EventEmitter<string>();
-
-  onShowRecepies(){
-    this.eventEmmit.emit('Recepie');
+  constructor(private dataStorageService: DataStorageService) {
   }
 
-  onShowShoppingList(){
-    this.eventEmmit.emit('ShopList');
+  public onSaveData(): void{
+    this.dataStorageService.storeRecepies();
+  }
+
+  public onFetchData(){
+    this.dataStorageService.fetchRecepies().subscribe();
   }
 }

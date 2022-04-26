@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { RecepiesComponent } from './recepies/recepies.component';
@@ -15,7 +14,10 @@ import {RecepieService} from "./recepies/recepie.service";
 import {AppRoutingModule} from "./app-routing.module";
 import { RecepieStartComponent } from './recepies/recepie-start/recepie-start.component';
 import { RecepieEditComponent } from './recepies/recepie-edit/recepie-edit.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { AuthComponent } from './auth/auth.component';
+import {LoadingSpinnerComponent} from "./shared/loading-spinner/loading-spinner.component";
 
 
 @NgModule({
@@ -30,12 +32,15 @@ import {ReactiveFormsModule} from "@angular/forms";
     ShopingEditComponent,
     DropdownDirective,
     RecepieStartComponent,
-    RecepieEditComponent
-
+    RecepieEditComponent,
+    LoadingSpinnerComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [ShoppingListService, RecepieService],

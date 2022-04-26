@@ -10,7 +10,7 @@ export class RecepieService{
 
   constructor(private slService: ShoppingListService) {}
 
-  private recepies: Recepie[] = [
+  /*private recepies: Recepie[] = [
     new Recepie(
       0,
       "Pasta",
@@ -30,7 +30,13 @@ export class RecepieService{
         new Ingredient('Meat', 1),
         new Ingredient('Salad', 2),
       ]),
-  ];
+  ];*/
+  private recepies: Recepie[] = [];
+
+  setRecepies(recepies: Recepie[]): void{
+    this.recepies = recepies;
+    this.recepiesList.next(this.recepies.slice());
+  }
 
   getRecepies(){
     return this.recepies.slice();
@@ -40,7 +46,6 @@ export class RecepieService{
     return this.recepies.find((recepie) => {
        return recepie.id === id;
     })!;
-
   }
 
   addIngredinetsToShoppingList(ingredients: Ingredient[]){
@@ -53,7 +58,8 @@ export class RecepieService{
   }
 
   deleteRecepie(index: number){
-    this.recepies.splice(index, 1);
+    const targetRecepie = this.recepies.find(x => x.id === index);
+    this.recepies.splice(this.recepies.findIndex(item => item.id === targetRecepie?.id), 1);
     this.recepiesList.next(this.recepies);
   }
 

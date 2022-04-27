@@ -9,12 +9,14 @@ import {RecepieStartComponent} from "./recepies/recepie-start/recepie-start.comp
 import {RecepieEditComponent} from "./recepies/recepie-edit/recepie-edit.component";
 import {RecepiesResolverServer} from "./recepies/recepies-resolver.server";
 import {AuthComponent} from "./auth/auth.component";
+import {AuthGuard} from "./auth/auth.guard";
 
 const appRoot: Routes = [
   {path: '', redirectTo: 'recepies', pathMatch: 'full'},
   {
     path: 'recepies',
     component: RecepiesComponent,
+    canActivate: [AuthGuard],
     children: [
       {path: '', component: RecepieStartComponent},
       {path: 'new', component: RecepieEditComponent},

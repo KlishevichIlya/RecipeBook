@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="recepieForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12" >
+          <button [disabled]="!recepieForm.valid" type="submit" class="btn btn-success">Save</button>
+          <button type="button" style="margin-left: 10px;" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" formControlName="name" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Image URL</label>
+            <input
+              id="imagePath"
+              type="text"
+              formControlName="imageUrl"
+              class="form-control"
+              #imagePath>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" formControlName="description" id="description" class="form-control" rows="6">
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="ingredients">
+          <div
+            style="margin-top: 10px;"
+            class="row"
+            *ngFor="let ingredient of ingredients; let i = index;"
+            [formGroupName]="i">
+            <div class="col-xs-8">
+              <input  type="text" class="form-control" formControlName="name">
+            </div>
+            <div class="col-xs-2">
+              <input  type="number" class="form-control" formControlName="amount">
+            </div>
+            <div class="col-xs-2">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDeleteIngredient(i)">
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="button" class="btn btn-success" (click)="onAddIngredient()">Add Ingredient</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

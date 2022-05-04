@@ -2,49 +2,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { RecepiesComponent } from './recepies/recepies.component';
-import { RecepieListComponent } from './recepies/recepie-list/recepie-list.component';
-import { RecepieDetailComponent } from './recepies/recepie-detail/recepie-detail.component';
-import { RecepieItemComponent } from './recepies/recepie-list/recepie-item/recepie-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShopingEditComponent } from './shopping-list/shoping-edit/shoping-edit.component';
-import {DropdownDirective} from "./shared/dropdown.directive";
-import {ShoppingListService} from "./shopping-list/shopping-list.service";
-import {RecepieService} from "./recepies/recepie.service";
 import {AppRoutingModule} from "./app-routing.module";
-import { RecepieStartComponent } from './recepies/recepie-start/recepie-start.component';
-import { RecepieEditComponent } from './recepies/recepie-edit/recepie-edit.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { AuthComponent } from './auth/auth.component';
-import {LoadingSpinnerComponent} from "./shared/loading-spinner/loading-spinner.component";
-import {AuthIntercetorService} from "./auth/auth-intercetor";
-
+import {HttpClientModule} from "@angular/common/http";
+import {ShoppingListModule} from "./shopping-list/shopping-list.module";
+import {SharedModule} from "./shared/shared.module";
+import {CoreModule} from "./core.module";
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecepiesComponent,
-    RecepieListComponent,
-    RecepieDetailComponent,
-    RecepieItemComponent,
-    ShoppingListComponent,
-    ShopingEditComponent,
-    DropdownDirective,
-    RecepieStartComponent,
-    RecepieEditComponent,
-    LoadingSpinnerComponent,
-    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule,
+    CoreModule,
   ],
-  providers: [ShoppingListService, RecepieService, {provide: HTTP_INTERCEPTORS, useClass: AuthIntercetorService, multi: true}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

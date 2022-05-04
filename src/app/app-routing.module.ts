@@ -1,5 +1,5 @@
 import {NgModule} from "@angular/core";
-import {RouterModule, Routes} from "@angular/router";
+import {PreloadAllModules, RouterModule, Routes} from "@angular/router";
 import {RecepieListComponent} from "./recepies/recepie-list/recepie-list.component";
 import {RecepiesComponent} from "./recepies/recepies.component";
 import {RecepieItemComponent} from "./recepies/recepie-list/recepie-item/recepie-item.component";
@@ -15,23 +15,22 @@ const appRoot: Routes = [
   {path: '', redirectTo: 'recepies', pathMatch: 'full'},
   {
     path: 'recepies',
-    component: RecepiesComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {path: '', component: RecepieStartComponent},
-      {path: 'new', component: RecepieEditComponent},
-      {path: ':id', component: RecepieDetailComponent, resolve: [RecepiesResolverServer]},
-      {path: ':id/edit', component: RecepieEditComponent, resolve: [RecepiesResolverServer]},
-    ]
+    loadChildren: () => import('./recepies/recepies.module').then(m => m.RecepiesModule)
   },
-  {path: 'auth', component: AuthComponent},
-  {path:'shopping-list', component: ShoppingListComponent }
-]
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'shopping-list',
+    loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListModule)
+  }
 
+]
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoot)
+    RouterModule.forRoot(appRoot, {preloadingStrategy: PreloadAllModules})
   ],
   exports: [RouterModule]
 })
